@@ -35,5 +35,8 @@ Route::resource('/job','JobController');
 
 Route::get('/jobskill','JobController@skillss');
 
+Route::get('/companydetail/{$id}','CompanyController@detail');
+
+Route::get('/jobsearch','JobController@searching');
 
 

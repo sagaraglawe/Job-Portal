@@ -34,6 +34,7 @@
                 <td> {{$job->salary}}</td>
                 <td> {{$job->experience}}</td>
                 <td> <a href="/job/{{$job->id}}" class="btn btn-info" role="button">Apply</a> </td>
+
             </tr>
 
 

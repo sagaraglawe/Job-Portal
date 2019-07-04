@@ -57,10 +57,9 @@ class UserEducationController extends Controller
 
         $id=Auth::user()->id;
 
-        $usereducation=UserEducation::find($id);
+        $usereducation=UserEducation::where('user_id',$id)->get();
 
-
-        if($usereducation == null){
+        if($usereducation->isEmpty()){
            // return "this is submit";
             UserEducation::create($request->all());
         }

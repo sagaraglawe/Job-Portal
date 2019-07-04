@@ -41,6 +41,7 @@ class JobController extends Controller
     public function create()
     {
         //
+
         return view('job.create');
     }
 
@@ -56,8 +57,6 @@ class JobController extends Controller
        // return "here";
        // return dd($request);
         Job::create($request->all());
-
-
 
         $user=Auth::user();
 
@@ -79,13 +78,17 @@ class JobController extends Controller
     public function show($id)
     {
         //
-       // return "this is show";
+        //return "this is show";
 
         $user=Auth::user();
 
         $job=Job::find($id);
 
         $user->jobs()->save($job);
+
+        $idd=$id;
+
+        //return view('employer.index',compact('idd'));
     }
 
     /**
@@ -101,9 +104,7 @@ class JobController extends Controller
 
         $id=Auth::user()->id;
 
-        $user=User::find($id);
-
-        $jobs=$user->jobs;
+        $jobs=Job::where('company_id',$id)->get();
 
        // return dd($jobs);
 
@@ -155,5 +156,16 @@ class JobController extends Controller
         return view('job.show',compact('jobs'));
     }
 
+
+    public function searching(){
+
+        $id=Auth::user()->id;
+
+        $user=User::find($id);
+
+        $jobs=$user->jobs;
+
+        return view('job.showapplied',compact('jobs'));
+    }
 
 }

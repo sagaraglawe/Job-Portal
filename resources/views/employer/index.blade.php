@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/job/{{$idd}}/edit">APPLIED JOBS</a>
+    <a href="/jobsearch">APPLIED JOBS</a>
     <br><br>
     <a href="/job">APPLY JOBS</a>
     <br><br>

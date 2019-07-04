@@ -5,7 +5,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Company Id</th>
+            <th scope="col">Job Id</th>
             <th scope="col">Location</th>
             <th scope="col">Skill</th>
             <th scope="col">Salary</th>
@@ -18,7 +18,7 @@
 
 
             <tr>
-                <td> {{$job->company_id}}</td>
+                <td> {{$job->id}}</td>
                 <td> {{$job->location}}</td>
                 <td> {{$job->skill}}</td>
                 <td> {{$job->salary}}</td>

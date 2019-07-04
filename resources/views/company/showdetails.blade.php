@@ -12,13 +12,15 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($details as $detail)
             <tr>
-                <td> {{$details->company_id}}</td>
-                <td> {{$details->location}}</td>
-                <td> {{$details->establishment_year}}</td>
-                <td> {{$details->website}}</td>
+                <td> {{$detail->company_id}}</td>
+                <td> {{$detail->location}}</td>
+                <td> {{$detail->establishment_year}}</td>
+                <td> {{$detail->website}}</td>
                 <td> <a href="/company" class="btn btn-info" role="button">Edit</a></td>
             </tr>
+            @endforeach
 
         </tbody>
     </table>

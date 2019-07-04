@@ -60,10 +60,22 @@ class CompanyController extends Controller
 
     public function edit(){
 
+
+
         $id = Auth::user()->id;
 
-        $details=Companyn::find($id);
+
+        $details=Companyn::where('company_id',$id)->get();
+
+       // return dd($details);
+        if($details->isEmpty())
+            return view('company.create');
 
         return view('company.showdetails',compact('details'));
+    }
+
+
+    public function detail($id){
+        return $id;
     }
 }
