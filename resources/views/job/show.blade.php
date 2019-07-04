@@ -2,6 +2,17 @@
 
 
 @section('content')
+
+
+
+
+    <form action="/jobskill" method="get" class="nav navbar-nav">
+        <input type="text" placeholder="Skill.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+
+
     <table class="table">
         <thead>
         <tr>

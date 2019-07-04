@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Job;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -46,6 +47,18 @@ class JobController extends Controller
        // return "here";
        // return dd($request);
         Job::create($request->all());
+
+
+
+        $user=Auth::user();
+
+        $id=$user->id;
+
+        $job=Job::find($id);
+
+        $user->jobs()->save($job);
+
+
     }
 
     /**
@@ -77,9 +90,13 @@ class JobController extends Controller
         //
         //return "this is edit";
 
-        $user=Auth::user();
+        $id=Auth::user()->id;
+
+        $user=User::find($id);
 
         $jobs=$user->jobs;
+
+       // return dd($jobs);
 
         return view('job.showapplied',compact('jobs'));
 
@@ -108,4 +125,26 @@ class JobController extends Controller
         //
         return "this is destroy";
     }
+
+
+
+
+
+
+
+    public function skillss(){
+
+
+        $request=request()->search;
+
+       // return $request;
+
+        $jobs=Job::where('skill','LIKE',"%$request%")->get();
+
+        //return dd($jobs);
+
+        return view('job.show',compact('jobs'));
+    }
+
+
 }

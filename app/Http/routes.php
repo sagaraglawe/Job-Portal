@@ -31,3 +31,9 @@ Route::resource('/employer','EmployerController');
 
 Route::resource('/job','JobController');
 
+
+
+Route::get('/jobskill','JobController@skillss');
+
+
+
