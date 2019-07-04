@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
     //
+
+    public function __construct()
+    {
+
+        $this->middleware('role');
+    }
+
+
     public function index(){
         return view('company.create');
     }

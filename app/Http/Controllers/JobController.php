@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
+
+
+    public function __construct()
+    {
+
+        $this->middleware('role');
+    }
+
+
     /**
      * Display a listing of the resource.
      *

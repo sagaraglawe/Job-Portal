@@ -9,6 +9,14 @@ use App\Http\Requests;
 class EmployerController extends Controller
 {
     //
+
+    public function __construct()
+    {
+
+        $this->middleware('role');
+    }
+
+
     public function show($id)
     {
         //
