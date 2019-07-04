@@ -70,4 +70,14 @@ class AuthController extends Controller
             'entity' => $data['submit'],
         ]);
     }
+
+    protected function authenticated($request, $user)
+    {
+        $id=$user->id;
+        if($user->entity === 'user') {
+            return redirect()->intended("/employer/{$id}");
+        }
+
+        return redirect()->intended("/company/{$id}");
+    }
 }

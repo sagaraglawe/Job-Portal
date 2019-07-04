@@ -24,3 +24,10 @@ Route::resource('/userskill','UserSkillController');
 Route::resource('/usereducation','UserEducationController');
 
 Route::resource('/userexperience','UserExperienceController');
+
+Route::resource('/company','CompanyController');
+
+Route::resource('/employer','EmployerController');
+
+Route::resource('/job','JobController');
+

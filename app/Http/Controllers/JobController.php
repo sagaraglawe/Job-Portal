@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\UserEducation;
-use App\UserExperience;
+
+use App\Job;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
-class UserExperienceController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +19,8 @@ class UserExperienceController extends Controller
     public function index()
     {
         //
+        $jobs=Job::all();
+        return view('job.show',compact('jobs'));
     }
 
     /**
@@ -30,7 +31,7 @@ class UserExperienceController extends Controller
     public function create()
     {
         //
-        return view('userExperience.create');
+        return view('job.create');
     }
 
     /**
@@ -42,18 +43,9 @@ class UserExperienceController extends Controller
     public function store(Request $request)
     {
         //
-        $id=Auth::user()->id;
-
-        $userexperience=UserExperience::find($id);
-
-        if($userexperience == null){
-            UserExperience::create($request->all());
-        }
-        else{
-            UserExperience::where('user_id',$id)->update(['years'=>$request->years]);
-        }
-
-
+       // return "here";
+       // return dd($request);
+        Job::create($request->all());
     }
 
     /**
@@ -65,12 +57,13 @@ class UserExperienceController extends Controller
     public function show($id)
     {
         //
+       // return "this is show";
 
-        $idd=Auth::user()->id;
-        $experience=User::find($idd)->experience;
+        $user=Auth::user();
 
-        return view('userexperience.show')->with(compact('experience'));
+        $job=Job::find($id);
 
+        $user->jobs()->save($job);
     }
 
     /**
@@ -82,7 +75,14 @@ class UserExperienceController extends Controller
     public function edit($id)
     {
         //
-        return view('userExperience.create');
+        //return "this is edit";
+
+        $user=Auth::user();
+
+        $jobs=$user->jobs;
+
+        return view('job.showapplied',compact('jobs'));
+
     }
 
     /**
@@ -106,5 +106,6 @@ class UserExperienceController extends Controller
     public function destroy($id)
     {
         //
+        return "this is destroy";
     }
 }

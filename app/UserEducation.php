@@ -10,8 +10,8 @@ class UserEducation extends Model
     protected $fillable=[
 
         'user_id',
-        '10th_percentage',
-        '12th_percentage',
+        'xth_percentage',
+        'xiith_percentage',
         'graduation_percentage'
     ];
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserSkill;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class UserSkillController extends Controller
 {
@@ -39,7 +41,19 @@ class UserSkillController extends Controller
     public function store(Request $request)
     {
         //
-        UserSkill::create($request->all());
+
+        $id=Auth::user()->id;
+
+
+        $userskill=UserSkill::find($id);
+
+        if($userskill == null){
+            UserSkill::create($request->all());
+        }
+        else{
+            UserSkill::where('user_id',$id)->update(['skill'=>$request->skill]);
+        }
+
     }
 
     /**
@@ -51,6 +65,10 @@ class UserSkillController extends Controller
     public function show($id)
     {
         //
+        $idd=Auth::user()->id;
+        $skill=User::find($idd)->skills;
+
+        return view('userskill.show')->with(compact('skill'));
     }
 
     /**
