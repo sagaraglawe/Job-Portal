@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <a href="/company/create">APPLIED APPLICANTS</a>
     <br><br>
     <a href="/company/{{$id}}/edit">Company Details</a>

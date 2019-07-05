@@ -23,7 +23,11 @@
                 <td> {{$job->skill}}</td>
                 <td> {{$job->salary}}</td>
                 <td> {{$job->experience}}</td>
-
+                <td> <form action="/job/{{$job->id}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        {{csrf_field()}}
+                        <button>Delete Job</button>
+                    </form> </td>
             </tr>
 
 
@@ -33,3 +37,4 @@
     </table>
 
 @endsection
+

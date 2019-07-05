@@ -42,6 +42,7 @@ class JobController extends Controller
     {
         //
 
+
         return view('job.create');
     }
 
@@ -56,6 +57,8 @@ class JobController extends Controller
         //
        // return "here";
        // return dd($request);
+        $id=Auth::user()->id;
+
         Job::create($request->all());
 
         $user=Auth::user();
@@ -65,6 +68,8 @@ class JobController extends Controller
         $job=Job::find($id);
 
         $user->jobs()->save($job);
+
+        return view('company.index',compact('id'));
 
 
     }
@@ -132,8 +137,18 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
-        return "this is destroy";
+
+            $companyid=Auth::user()->id;
+
+            $job=Job::find($id);
+
+            $job->users()->sync([]);
+
+            $job->delete();
+
+            $id=$companyid;
+
+            return view('company.index',compact('id'));
     }
 
 

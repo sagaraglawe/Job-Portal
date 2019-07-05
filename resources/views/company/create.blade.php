@@ -6,7 +6,7 @@
     <form action="/company" method="post">
         {{csrf_field()}}
         Company Id:<br>
-        <input type="integer" name="company_id" placeholder="company_id"><br>
+        <input type="integer" name="company_id" placeholder="company_id" value="{{Auth::user()->id}}"><br>
         Location:<br>
         <input type="string" name="location" placeholder="location"><br>
         Establishment Year:<br>

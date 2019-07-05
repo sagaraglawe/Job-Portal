@@ -22,6 +22,8 @@ class CompanyController extends Controller
 
 
     public function index(){
+
+        $id=Auth::user()->id;
         return view('company.create');
     }
     public function show()
@@ -35,15 +37,20 @@ class CompanyController extends Controller
 
         $companyid=Auth::user()->id;
 
-        $temp=Companyn::find($companyid);
-        if($temp == null){
+        $temp=Companyn::where('company_id',$companyid)->get();
+
+
+        if($temp->isEmpty()){
             Companyn::create($request->all());
         }
         else{
 
-            Companyn::where('id',$companyid)->update(['location'=>$request->location,'establishment_year'=>$request->establishment_year,'website'=>$request->website]);
+            Companyn::where('company_id',$companyid)->update(['location'=>$request->location,'establishment_year'=>$request->establishment_year,'website'=>$request->website]);
         }
 
+        $id=Auth::user()->id;
+
+        return view('company.index',compact('id'));
 
     }
 

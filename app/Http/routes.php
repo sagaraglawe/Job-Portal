@@ -40,3 +40,4 @@ Route::get('/companydetail/{$id}','CompanyController@detail');
 Route::get('/jobsearch','JobController@searching');
 
 
+

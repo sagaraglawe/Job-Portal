@@ -6,7 +6,7 @@
     <form action="/userskill" method="post">
         {{csrf_field()}}
         User Id:<br>
-        <input type="integer" name="user_id" placeholder="user_id"><br>
+        <input type="integer" name="user_id" placeholder="user_id" value="{{Auth::user()->id}}"><br>
         Skills:<br>
         <input type="text" name="skill" placeholder="skill"><br><br>
         <input type="submit">
