@@ -62,7 +62,9 @@ class UserExperienceController extends Controller
             UserExperience::where('user_id',$id)->update(['years'=>$request->years]);
         }
 
+        $idd=$id;
 
+        return view('employer.index',compact('idd'));
     }
 
     /**

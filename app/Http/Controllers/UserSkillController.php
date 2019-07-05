@@ -65,6 +65,10 @@ class UserSkillController extends Controller
             UserSkill::where('user_id',$id)->update(['skill'=>$request->skill]);
         }
 
+        $idd=$id;
+
+        return view('employer.index',compact('idd'));
+
     }
 
     /**

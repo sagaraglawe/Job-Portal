@@ -32,6 +32,7 @@ class UserEducationController extends Controller
         UserEducation::where('id',$idd)->delete();
         UserEducation::create($request->all());
 
+
     }
 
     /**
@@ -68,7 +69,9 @@ class UserEducationController extends Controller
                                                         'graduation_percentage'=>$request->graduation_percentage]);
         }
 
+        $idd=$id;
 
+        return view('employer.index',compact('idd'));
     }
 
     /**
