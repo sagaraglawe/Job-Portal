@@ -1,8 +1,8 @@
-#Online Job Portal
+# Online Job Portal
 
-#Here Company can login to post the form and applicant can login to apply the Job
+# Here Company can login to post the form and applicant can login to apply the Job
 
-#The functionality implemented are as follow
+# The functionality implemented are as follow
 
 Company can post the job
 Company can view the previous posted job
